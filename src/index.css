@@ -66,23 +66,23 @@ h2 {
 /*CTA Config*/
 .primaryCta {
   background: white;
-  color: black;
-  border-color: black;
+  color: #033764;
+  border-color: #033764;
 
   &:hover {
     color: white;
-    background-color: black;
+    background-color: #033764;
     border-color: white;
   }
 }
 .secondaryCta {
   background: white;
-  color: black;
-  border-color: black;
+  color: #033764;
+  border-color: #033764;
 
   &:hover {
     color: white;
-    background-color: black;
+    background-color: #033764;
     border-color: white;
   }
 }
