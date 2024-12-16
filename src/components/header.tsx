@@ -6,23 +6,23 @@ type Link = {
 };
 
 const links: any[] = [
-  {
-    label: "Find Care",
-    url: "/",
-  },
-  {
-    label: "For Patients",
-    url: "/professionals.html",
-  },
-  {
-    label: "For Providers",
-    url: "/",
-  },
-  ,
-  {
-    label: "For community",
-    url: "/",
-  },
+  // {
+  //   label: "Find Care",
+  //   url: "/",
+  // },
+  // {
+  //   label: "For Patients",
+  //   url: "/professionals.html",
+  // },
+  // {
+  //   label: "For Providers",
+  //   url: "/",
+  // },
+  // ,
+  // {
+  //   label: "For community",
+  //   url: "/",
+  // },
 ];
 
 const Header = ({ _site }: any) => {
@@ -35,7 +35,7 @@ const Header = ({ _site }: any) => {
   ));
 
   return (
-    <div className="p-6 flex justify-between items-center w-full max-w-screen-3xl">
+    <div className="p-0 flex justify-between items-center w-full max-w-screen-3xl">
       <img
         src="https://a.mktgcdn.com/p-sandbox/3Y4jIBpymHzrIHxzo1_AdrusPTDvpghqJW5GQP-GHGM/2864x134.png"
         alt=""
