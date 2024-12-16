@@ -28,7 +28,7 @@ export interface GlobalConfigProps {
 
 export const GlobalConfig: GlobalConfigProps = {
   accountEnv: "Sandbox", //Production or Sandbox
-  searchExperienceVersion: "Staging", // Production or Staging
+  searchExperienceVersion: "Production", // Production or Staging
   chatExperienceVersion: "Production", // Production or Staging
   isChatEnabled: true, //true or false, also fill YEXT_PUBLIC_CHAT_APIKEY and YEXT_PUBLIC_CHAT_BOTID to work
   locale: "en", // your locale eg: en_GB
