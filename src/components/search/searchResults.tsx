@@ -127,7 +127,7 @@ const SearchResults = () => {
               {resultsCount > 0 ? (
                 <>
                   {pageType === "map" ? (
-                    <section className="w-full flex md:h-[950px]">
+                    <section className="w-full flex md:h-[950px] mb-48">
                       <article className="w-full md:w-2/5">
                         <SpellCheck />
                         <div className="w-full h-auto overflow-scroll relative">
