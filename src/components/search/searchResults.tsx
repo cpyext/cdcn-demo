@@ -10,7 +10,6 @@ import {
   SpellCheck,
   UniversalResults,
   DirectAnswer,
-  GenerativeDirectAnswer,
 } from "@yext/search-ui-react";
 import {
   GlobalConfig,
