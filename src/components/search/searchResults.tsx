@@ -48,6 +48,7 @@ const SearchResults = () => {
     query: { mostRecentSearch },
     filters,
     universal,
+    generativeDirectAnswer,
   } = _state;
   const universalResultsLength =
     universal?.verticals?.[0]?.results?.length || 0;
@@ -56,7 +57,9 @@ const SearchResults = () => {
   const currentVerticalConfig = VerticalConfig.find(
     (item) => item.verticalKey === verticalKey
   );
-
+  const isGenALoading =
+    (generativeDirectAnswer.isLoading && generativeDirectAnswer.response) ||
+    false;
   const currLabel = currentVerticalConfig?.label;
   const cardType = currentVerticalConfig?.cardType;
   const pageType = currentVerticalConfig?.pageType || "standard";
@@ -70,58 +73,6 @@ const SearchResults = () => {
       standard: "flex flex-col border rounded-md",
     };
     return classesMap[pageType];
-  };
-
-  const renderGenDirectAnswer = () => {
-    const isGenALoading = useSearchState(
-      (state) => state.generativeDirectAnswer.isLoading
-    );
-    return (
-      <>
-        {isGenALoading ? (
-          <section
-            className="p-6 border border-gray-200 rounded-lg shadow-sm centered-container"
-            aria-busy="true"
-            aria-label="Loading content"
-          >
-            <div className="animate-pulse flex space-x-4">
-              <div className="flex-1 space-y-6 py-1">
-                <div
-                  className="h-4 bg-slate-700 rounded w-1/4"
-                  aria-hidden="true"
-                ></div>
-                <div className="space-y-3">
-                  <div className="grid grid-cols-3 gap-4">
-                    <div
-                      className="h-2 bg-slate-700 rounded col-span-3"
-                      aria-hidden="true"
-                    ></div>
-                    <div
-                      className="h-2 bg-slate-700 rounded col-span-3"
-                      aria-hidden="true"
-                    ></div>
-                  </div>
-                  <div
-                    className="h-2 bg-slate-700 rounded"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="h-2 bg-slate-700 rounded"
-                    aria-hidden="true"
-                  ></div>
-                  <div
-                    className="h-2 bg-slate-700 rounded"
-                    aria-hidden="true"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </section>
-        ) : (
-          <GenerativeDirectAnswer />
-        )}
-      </>
-    );
   };
 
   return (
@@ -143,7 +94,9 @@ const SearchResults = () => {
                 <article className="centered-container my-12">
                   <SpellCheck />
                   {GlobalConfig.isGenerativeDirectAnswerEnabled ? (
-                    renderGenDirectAnswer()
+                    <GenerativeDirectAnswer
+                      customCssClasses={{ container: "mb-8" }}
+                    />
                   ) : (
                     <DirectAnswer
                       customCssClasses={{

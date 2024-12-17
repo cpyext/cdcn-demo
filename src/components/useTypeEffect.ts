@@ -42,6 +42,8 @@ export const useTypingEffect = () => {
       const res = await fetch(url);
       const body = await res.json();
       const qs = body.response.results.map((item: any) => item.value);
+      console.log(qs);
+
       setQueryPrompts(qs);
     } catch (error) {
       console.error("Error fetching prompts:", error);
