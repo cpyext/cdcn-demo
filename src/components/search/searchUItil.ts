@@ -38,14 +38,16 @@ export const SearchUtils = ({
   if (vertical && vertical !== "universal") {
     searchActions.setVertical(vertical);
     const verticalLimit = getVerticalLimit(vertical);
-    context && searchActions.setContext(getDecodexContext(context));
+    Object.keys(context).length !== 0 &&
+      searchActions.setContext(getDecodexContext(context));
     if (verticalLimit !== undefined && verticalLimit >= 1) {
       searchActions.setVerticalLimit(verticalLimit);
     }
     searchActions.executeVerticalQuery();
   } else {
     searchActions.setUniversal();
-    context && searchActions.setContext(getDecodexContext(context));
+    Object.keys(context).length !== 0 &&
+      searchActions.setContext(getDecodexContext(context));
     searchActions.setUniversalLimit(getUniversalLimit());
     searchActions.executeUniversalQuery();
   }
