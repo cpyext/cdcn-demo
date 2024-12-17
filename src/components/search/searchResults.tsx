@@ -26,6 +26,7 @@ import { MapboxMaps, Map, Coordinate } from "@yext/pages-components";
 import { IoClose } from "react-icons/io5";
 import SortDropdown from "../SortDropdown";
 import { buildSortOptions } from "./searchUItil";
+import GenDAComponent from "./GenDAComponent";
 type MapContextType = {
   hoveredId: string;
   setHoveredId: (value: string) => void;
@@ -57,9 +58,6 @@ const SearchResults = () => {
   const currentVerticalConfig = VerticalConfig.find(
     (item) => item.verticalKey === verticalKey
   );
-  const isGenALoading =
-    (generativeDirectAnswer.isLoading && generativeDirectAnswer.response) ||
-    false;
   const currLabel = currentVerticalConfig?.label;
   const cardType = currentVerticalConfig?.cardType;
   const pageType = currentVerticalConfig?.pageType || "standard";
@@ -74,7 +72,6 @@ const SearchResults = () => {
     };
     return classesMap[pageType];
   };
-
   return (
     <div className="px-4 ">
       {isLoading ? (
@@ -94,9 +91,7 @@ const SearchResults = () => {
                 <article className="centered-container my-12">
                   <SpellCheck />
                   {GlobalConfig.isGenerativeDirectAnswerEnabled ? (
-                    <GenerativeDirectAnswer
-                      customCssClasses={{ container: "mb-8" }}
-                    />
+                    <GenDAComponent />
                   ) : (
                     <DirectAnswer
                       customCssClasses={{
