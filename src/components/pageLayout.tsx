@@ -16,13 +16,16 @@ type Props = {
 };
 const PageLayout = ({ _site, children }: Props) => {
   return (
-    <div className="min-h-screen">
-      <Header _site={_site} />
-      <div className="py-8">
-        <SearchHeadlessProvider searcher={provideHeadless(searchConfig)}>
-          {children}
-        </SearchHeadlessProvider>
-      </div>
+    <>
+      <article className="min-h-screen">
+        <Header _site={_site} />
+        <article className="py-8">
+          <SearchHeadlessProvider searcher={provideHeadless(searchConfig)}>
+            {children}
+          </SearchHeadlessProvider>
+        </article>
+        <Footer _site={_site}></Footer>
+      </article>
       {GlobalConfig.isChatEnabled &&
         typeof window !== "undefined" &&
         import.meta.env.YEXT_PUBLIC_CHAT_APIKEY &&
@@ -54,8 +57,7 @@ const PageLayout = ({ _site, children }: Props) => {
             />
           </ChatHeadlessProvider>
         )}
-      <Footer _site={_site}></Footer>
-    </div>
+    </>
   );
 };
 
